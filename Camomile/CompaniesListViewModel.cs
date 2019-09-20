@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace Camomile
 {
-    public class CompaniesListViewModel : INotifyPropertyChanged
+    public class CompaniesListViewModel : ViewModel
     {
         private CompanyViewModel selectedCompany;
 
@@ -35,13 +35,9 @@ namespace Camomile
             Companies = new ObservableCollection<CompanyViewModel>
             {
                 new CompanyViewModel {Id = 1, Name="Test1", ContractStatus="Opened"},
-                new CompanyViewModel {Id = 2, Name="Test2", ContractStatus="Closed"}
+                new CompanyViewModel {Id = 2, Name="Test2", ContractStatus="Not signed"},
+                new CompanyViewModel {Id = 3, Name="Test3", ContractStatus="Closed"}
             };
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

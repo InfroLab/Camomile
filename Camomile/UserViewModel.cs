@@ -9,9 +9,8 @@ using System.Collections.ObjectModel;
 
 namespace Camomile
 {
-    class UserViewModel : INotifyPropertyChanged
+    class UserViewModel : ViewModel
     {
-        private int id;
         private string name;
         private string login;
         private string password;
@@ -79,11 +78,5 @@ namespace Camomile
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }

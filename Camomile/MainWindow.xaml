@@ -52,9 +52,9 @@
                 <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding CompanyId, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Добавить" Margin="10"/>
-                <Button Content="Редактировать" Margin="10"/>
-                <Button Content="Удалить" Margin="10"/>
+                <Button Command="{Binding AddUserCommand}" Content="Добавить" Margin="10"/>
+                <Button Command="{Binding EditUserCommand}" Content="Редактировать" Margin="10"/>
+                <Button Command="{Binding DeleteUserCommand}" Content="Удалить" Margin="10"/>
             </StackPanel>
         </StackPanel>
     </Grid>

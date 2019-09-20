@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Camomile
 {
-    public class CompanyViewModel : INotifyPropertyChanged
+    public class CompanyViewModel : ViewModel
     {
         private int id;
         private string name;
@@ -49,14 +49,6 @@ namespace Camomile
                     OnPropertyChanged("ContractStatus");
                 }
             }
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
