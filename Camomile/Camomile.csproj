@@ -66,9 +66,12 @@
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Command.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="DataContext.cs" />
     <Compile Include="EditUserWindow.xaml.cs">
       <DependentUpon>EditUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="UsersListViewModel.cs" />
     <Compile Include="UserViewModel.cs" />
     <Compile Include="ViewModel.cs" />

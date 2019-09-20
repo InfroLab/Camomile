@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-namespace Camomile
+﻿namespace Camomile
 {
     public class CompanyViewModel : ViewModel
     {
