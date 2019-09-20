@@ -5,38 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Camomile"
         mc:Ignorable="d"
-        Title="Ромашка и Партнеры" Height="346.5" Width="776">
+        Title="Ромашка и Партнеры" Height="300" Width="750">
     <Grid Background="#FF070525">
-        <ListView HorizontalAlignment="Left" Height="207" Margin="10,31,0,0" VerticalAlignment="Top" Width="380" Background="Gainsboro">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView HorizontalAlignment="Left" Height="207" Margin="395,31,0,0" VerticalAlignment="Top" Width="353" Background="Gainsboro">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Content="Добавить запись" HorizontalAlignment="Left" Height="25" Margin="10,272,0,0" VerticalAlignment="Top" Width="123" Click="Button_Click"/>
-        <Button Content="Изменить запись" HorizontalAlignment="Left" Height="25" Margin="139,272,0,0" VerticalAlignment="Top" Width="122"/>
-        <Button Content="Удалить запись" HorizontalAlignment="Left" Height="25" Margin="267,272,0,0" VerticalAlignment="Top" Width="123"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="10,243,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top" Width="123"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="139,243,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="123"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="267,243,0,0" TextWrapping="Wrap" Text="ContractStatus" VerticalAlignment="Top" Width="123"/>
-        <Button Content="Добавить запись" HorizontalAlignment="Left" Height="25" Margin="395,272,0,0" VerticalAlignment="Top" Width="113" Click="Button_Click"/>
-        <Button Content="Изменить запись" HorizontalAlignment="Left" Height="25" Margin="514,272,0,0" VerticalAlignment="Top" Width="110"/>
-        <Button Content="Удалить запись" HorizontalAlignment="Left" Height="25" Margin="629,272,0,0" VerticalAlignment="Top" Width="119"/>
-        <TextBlock HorizontalAlignment="Left" Height="16" Margin="10,10,0,0" TextWrapping="Wrap" Text="Компании" VerticalAlignment="Top" Width="380" Background="#FFD1D1D1"/>
-        <TextBlock HorizontalAlignment="Left" Height="16" Margin="395,10,0,0" TextWrapping="Wrap" Text="Пользователи" VerticalAlignment="Top" Width="353" Background="#FFD1D1D1"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="395,243,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top" Width="66"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="467,243,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="66" RenderTransformOrigin="1.075,0.15"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="536,243,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="67"/>
-        <PasswordBox HorizontalAlignment="Left" Height="20" Margin="606,243,0,0" VerticalAlignment="Top" Width="67"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="679,243,0,0" TextWrapping="Wrap" Text="Company" VerticalAlignment="Top" Width="66"/>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="CompanyColumn" Grid.Column="0">
+            <ListView HorizontalAlignment="Stretch" Height="150" Margin="10" VerticalAlignment="Top" Background="Gainsboro" 
+                  ItemsSource="{Binding Companies}"
+                 SelectedItem="{Binding SelectedCompany, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="Auto" Header="Company Name" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Width="Auto" Header="Contract Status" DisplayMemberBinding="{Binding Path=ContractStatus}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel DataContext="{Binding SelectedCompany}" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding ContractStatus, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Добавить" Margin="10"/>
+                <Button Content="Редактировать" Margin="10"/>
+                <Button Content="Удалить" Margin="10"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="UserColumn" Grid.Column="1">
+            <ListView HorizontalAlignment="Stretch" Height="150" Margin="10" VerticalAlignment="Top" Background="Gainsboro" 
+                  ItemsSource="{Binding Users}"
+                 SelectedItem="{Binding SelectedUser, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="Auto" Header="User Name" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Width="Auto" Header="Login" DisplayMemberBinding="{Binding Path=Login}" />
+                        <GridViewColumn Width="Auto" Header="Password" DisplayMemberBinding="{Binding Path=Password}" />
+                        <GridViewColumn Width="Auto" Header="Company ID" DisplayMemberBinding="{Binding Path=CompanyId}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel DataContext="{Binding SelectedUser}" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding CompanyId, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Добавить" Margin="10"/>
+                <Button Content="Редактировать" Margin="10"/>
+                <Button Content="Удалить" Margin="10"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
