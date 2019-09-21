@@ -5,24 +5,8 @@ namespace Camomile
 {
     class UsersListViewModel : ViewModel
     {
-        private ObservableCollection<UserViewModel> users = new ObservableCollection<UserViewModel>();
         private UserViewModel selectedUser;
-        public ObservableCollection<UserViewModel> Users
-        {
-            get
-            {
-                return users;
-            }
-            set
-            {
-                if(users != value)
-                {
-                    users = value;
-                    OnPropertyChanged("Users");
-                }
-
-            }
-        }
+        public ObservableCollection<UserViewModel> Users { get; set; }
         public UserViewModel SelectedUser
         {
             get
@@ -42,7 +26,7 @@ namespace Camomile
         {
             Users = new ObservableCollection<UserViewModel>()
             {
-                new UserViewModel{Id=1, Name="Ivanov Ivan", Login="II", Password="12345", CompanyId=1},
+                new UserViewModel{Id=1, Name="Ivanov Ivan", Login="II", Password="123123232131231231232131232312313145", CompanyId=133333},
                 new UserViewModel{Id=2, Name="Petrov Ivan", Login="PI", Password="67890", CompanyId=2}
             };
 
@@ -76,33 +60,42 @@ namespace Camomile
                 execute: (obj) =>
                 {
                     Users.Remove(SelectedUser);
+                    //TO-DO: Удалить пользовател по id
                 }
                 );
             EditUserCommand = new Command(
                 execute: (obj) =>
                 {
-                    EditUserWindow editUserWindow = new EditUserWindow(SelectedUser.Id, SelectedUser.Name, SelectedUser.Login, SelectedUser.Password, SelectedUser.CompanyId);
-                    int editIndex = Users.IndexOf(SelectedUser);
-
-                    if (editUserWindow.ShowDialog() == true)
+                    if (selectedUser != null)
                     {
-                        if (editUserWindow.Name != "" && editUserWindow.Login != "" && editUserWindow.Password != "" && editUserWindow.CompanyID > -1)
+                        EditUserWindow editUserWindow = new EditUserWindow(SelectedUser.Id, SelectedUser.Name, SelectedUser.Login, SelectedUser.Password, SelectedUser.CompanyId);
+                        int editIndex = Users.IndexOf(SelectedUser);
+
+                        if (editUserWindow.ShowDialog() == true)
                         {
-                            SelectedUser.Id = editUserWindow.Id;
-                            SelectedUser.Name = editUserWindow.Name;
-                            SelectedUser.Login = editUserWindow.Login;
-                            SelectedUser.Password = editUserWindow.Password;
-                            SelectedUser.CompanyId = editUserWindow.CompanyID;
+                            if (editUserWindow.Name != "" && editUserWindow.Login != "" && editUserWindow.Password != "" && editUserWindow.CompanyID > -1)
+                            {
+                                SelectedUser.Id = editUserWindow.Id;
+                                SelectedUser.Name = editUserWindow.Name;
+                                SelectedUser.Login = editUserWindow.Login;
+                                SelectedUser.Password = editUserWindow.Password;
+                                SelectedUser.CompanyId = editUserWindow.CompanyID;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect input values!", "Error!", MessageBoxButton.OK);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Incorrect input values!", "Error!", MessageBoxButton.OK);
+                            MessageBox.Show("Failed to edit user!", "Error!", MessageBoxButton.OK);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Failed to edit user!", "Error!", MessageBoxButton.OK);
+                        MessageBox.Show("Select the user entry!", "Error!", MessageBoxButton.OK);
                     }
+
                 }
                 );
         }

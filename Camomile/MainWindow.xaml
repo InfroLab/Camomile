@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Camomile"
         mc:Ignorable="d"
-        Title="Ромашка и Партнеры" Height="300" Width="750">
+        Title="Ромашка и Партнеры" Height="250" Width="750">
     <Grid Background="#FF070525">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*" />
@@ -22,14 +22,10 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel DataContext="{Binding SelectedCompany}" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
-                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding ContractStatus, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Добавить" Margin="10"/>
-                <Button Content="Редактировать" Margin="10"/>
-                <Button Content="Удалить" Margin="10"/>
+                <Button Command="{Binding AddCompanyCommand}" Content="Добавить" Margin="10"/>
+                <Button Command="{Binding EditCompanyCommand}" Content="Редактировать" Margin="10"/>
+                <Button Command="{Binding DeleteCompanyCommand}" Content="Удалить" Margin="10"/>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="UserColumn" Grid.Column="1">
@@ -45,12 +41,6 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel DataContext="{Binding SelectedUser}" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
-                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
-                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
-                <TextBox HorizontalAlignment="Stretch" Height="20" MinWidth="75" MaxWidth="125"  Margin="10" TextWrapping="Wrap" Text="{Binding CompanyId, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Command="{Binding AddUserCommand}" Content="Добавить" Margin="10"/>
                 <Button Command="{Binding EditUserCommand}" Content="Редактировать" Margin="10"/>
