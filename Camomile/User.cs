@@ -9,6 +9,6 @@ namespace Camomile
         public string Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public int CompanyID { get; set; }
+        public int CompanyId { get; set; }
     }
 }

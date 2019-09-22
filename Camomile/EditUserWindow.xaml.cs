@@ -15,7 +15,7 @@ namespace Camomile
             Name = name;
             Login = login;
             Password = password;
-            CompanyID = companyId;
+            CompanyId = companyId;
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -38,10 +38,10 @@ namespace Camomile
             get { return PasswordBox.Text; }
             set { PasswordBox.Text = value; }
         }
-        public int CompanyID
+        public int CompanyId
         {
-            get { return Convert.ToInt32(CompanyIDBox.Text); }
-            set { CompanyIDBox.Text = Convert.ToString(value); }
+            get { return Convert.ToInt32(CompanyIdBox.Text); }
+            set { CompanyIdBox.Text = Convert.ToString(value); }
         }
     }
 }

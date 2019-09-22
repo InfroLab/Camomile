@@ -1,6 +1,6 @@
 ﻿namespace Camomile
 {
-    class UserViewModel : ViewModel
+    public class UserViewModel : ViewModel
     {
         private string name;
         private string login;

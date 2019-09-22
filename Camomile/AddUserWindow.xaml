@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Camomile"
         mc:Ignorable="d"
-        Title="Добавить нового пользователя" Height="250" Width="500">
+        Title="Добавить нового пользователя" Height="137" Width="435">
     <Grid>
-        <Button x:Name="AddButton" IsDefault="True" Content="Add" HorizontalAlignment="Left" Height="71" Margin="10,120,0,0" VerticalAlignment="Top" Width="213" Click="AddButton_Click"/>
-        <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Height="71" Margin="269,120,0,0" VerticalAlignment="Top" Width="213"/>
+        <Button x:Name="AddButton" IsDefault="True" Content="Add" HorizontalAlignment="Left" Height="20" Margin="113,76,0,0" VerticalAlignment="Top" Width="98" Click="AddButton_Click"/>
+        <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Height="20" Margin="216,76,0,0" VerticalAlignment="Top" Width="98"/>
         <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="21" Margin="10,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
         <TextBox x:Name="LoginBox" HorizontalAlignment="Left" Height="21" Margin="113,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
         <TextBox x:Name="PasswordBox" HorizontalAlignment="Left" Height="21" Margin="216,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-        <TextBox x:Name="CompanyIDBox" HorizontalAlignment="Left" Height="21" Margin="319,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
+        <TextBox x:Name="CompanyIdBox" HorizontalAlignment="Left" Height="21" Margin="319,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="10,26,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="98"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="113,26,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="98"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="216,26,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="98"/>

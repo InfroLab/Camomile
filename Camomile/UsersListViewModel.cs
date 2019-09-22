@@ -6,7 +6,8 @@ namespace Camomile
     class UsersListViewModel : ViewModel
     {
         private UserViewModel selectedUser;
-        public ObservableCollection<UserViewModel> Users { get; set; }
+        public static ObservableCollection<UserViewModel> Users { get; set; }
+        public static int CurrentCompanyId;
         public UserViewModel SelectedUser
         {
             get
@@ -24,11 +25,7 @@ namespace Camomile
         }
         public UsersListViewModel()
         {
-            Users = new ObservableCollection<UserViewModel>()
-            {
-                new UserViewModel{Id=1, Name="Ivanov Ivan", Login="II", Password="123123232131231231232131232312313145", CompanyId=133333},
-                new UserViewModel{Id=2, Name="Petrov Ivan", Login="PI", Password="67890", CompanyId=2}
-            };
+            Users = Database.GetUsers();
 
             AddUserCommand = new Command(
                 execute: (obj) =>
@@ -37,30 +34,26 @@ namespace Camomile
 
                     if(addUserWindow.ShowDialog() == true)
                     {
-                        if(addUserWindow.Name != "" && addUserWindow.Login != "" && addUserWindow.Password != "" && addUserWindow.CompanyID > -1)
+                        if(addUserWindow.Name != "" && addUserWindow.Login != "" && addUserWindow.Password != "" && addUserWindow.CompanyId > -1)
                         {
-                            int latest_id = Users[Users.Count - 1].Id + 1;
-                            Users.Add
-                            (
-                                new UserViewModel { Id = latest_id, Name = addUserWindow.Name, Login = addUserWindow.Login, Password = addUserWindow.Password, CompanyId = addUserWindow.CompanyID }
-                                );
+                            Database.AddUser(new User { Name = addUserWindow.Name, Login = addUserWindow.Login, Password = addUserWindow.Password, CompanyId = addUserWindow.CompanyId });
+                            Database.GetUsersByCompany(CurrentCompanyId);
                         }
                         else
                         {
                             MessageBox.Show("Incorrect input values!", "Error!", MessageBoxButton.OK);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Failed to add a new user!", "Error!", MessageBoxButton.OK);
-                    }
                 }
                 );
             DeleteUserCommand = new Command(
                 execute: (obj) =>
                 {
-                    Users.Remove(SelectedUser);
-                    //TO-DO: Удалить пользовател по id
+                    if (SelectedUser != null)
+                    {
+                        Database.RemoveUser(SelectedUser.Id);
+                        Database.GetUsersByCompany(CurrentCompanyId);
+                    }
                 }
                 );
             EditUserCommand = new Command(
@@ -73,22 +66,15 @@ namespace Camomile
 
                         if (editUserWindow.ShowDialog() == true)
                         {
-                            if (editUserWindow.Name != "" && editUserWindow.Login != "" && editUserWindow.Password != "" && editUserWindow.CompanyID > -1)
+                            if (editUserWindow.Name != "" && editUserWindow.Login != "" && editUserWindow.Password != "" && editUserWindow.CompanyId > -1)
                             {
-                                SelectedUser.Id = editUserWindow.Id;
-                                SelectedUser.Name = editUserWindow.Name;
-                                SelectedUser.Login = editUserWindow.Login;
-                                SelectedUser.Password = editUserWindow.Password;
-                                SelectedUser.CompanyId = editUserWindow.CompanyID;
+                                Database.UpdateUser(new User { Id = editUserWindow.Id, Name = editUserWindow.Name, Login = editUserWindow.Login, Password = editUserWindow.Password, CompanyId = editUserWindow.CompanyId });
+                                Database.GetUsersByCompany(CurrentCompanyId);
                             }
                             else
                             {
                                 MessageBox.Show("Incorrect input values!", "Error!", MessageBoxButton.OK);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to edit user!", "Error!", MessageBoxButton.OK);
                         }
                     }
                     else

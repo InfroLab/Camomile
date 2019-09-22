@@ -21,17 +21,23 @@ namespace Camomile
                     selectedCompany = value;
                     OnPropertyChanged("SelectedCompany");
                 }
+                if(value != null)
+                {
+                    Database.GetUsersByCompany(value.Id);
+                    UsersListViewModel.CurrentCompanyId = value.Id;
+                }
+                else
+                {
+                    //Clearing the list since there is no selected company
+                    UsersListViewModel.Users.Clear();
+                }
             }
         }
 
         public CompaniesListViewModel()
         {
-            Companies = new ObservableCollection<CompanyViewModel>
-            {
-                new CompanyViewModel {Id = 1, Name="Test1", ContractStatus="Opened"},
-                new CompanyViewModel {Id = 2, Name="Test2", ContractStatus="Unsigned"},
-                new CompanyViewModel {Id = 3, Name="Test3", ContractStatus="Closed"}
-            };
+            Companies = Database.GetCompanies();
+
             AddCompanyCommand = new Command(
                 execute: (obj) =>
                 {
@@ -41,20 +47,13 @@ namespace Camomile
                     {
                         if (addCompanyWindow.Name != "" && addCompanyWindow.ContractStatus != "")
                         {
-                            int latest_id = Companies[Companies.Count - 1].Id + 1;
-                            Companies.Add
-                            (
-                                new CompanyViewModel { Id = latest_id, Name = addCompanyWindow.Name, ContractStatus = addCompanyWindow.ContractStatus }
-                                );
+                            Database.AddCompany(new Company { Name = addCompanyWindow.Name, ContractStatus = addCompanyWindow.ContractStatus });
+                            Companies = Database.GetCompanies();
                         }
                         else
                         {
                             MessageBox.Show("Incorrect input values!", "Error!", MessageBoxButton.OK);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to add a new user!", "Error!", MessageBoxButton.OK);
                     }
                 }
                 );
@@ -62,9 +61,11 @@ namespace Camomile
             DeleteCompanyCommand = new Command(
                 execute: (obj) =>
                 {
-                    Companies.Remove(SelectedCompany);
-                    //TO-DO: Очистить сетку пользователей
-                    //TO-DO: Удалить всех связанных пользователей
+                    if(SelectedCompany != null)
+                    {
+                        Database.RemoveCompany(SelectedCompany.Id);
+                        Companies = Database.GetCompanies();
+                    }
                 }
                 );
 
@@ -80,9 +81,8 @@ namespace Camomile
                         {
                             if (editCompanyWindow.Name != "" && editCompanyWindow.ContractStatus != "")
                             {
-                                SelectedCompany.Id = editCompanyWindow.Id;
-                                SelectedCompany.Name = editCompanyWindow.Name;
-                                SelectedCompany.ContractStatus = editCompanyWindow.ContractStatus;
+                                Database.UpdateCompany(new Company { Id = editCompanyWindow.Id, ContractStatus = editCompanyWindow.ContractStatus, Name = editCompanyWindow.Name });
+                                Companies = Database.GetCompanies();
                             }
                             else
                             {
@@ -91,14 +91,10 @@ namespace Camomile
                         }
                         else
                         {
-                            MessageBox.Show("Failed to edit company!", "Error!", MessageBoxButton.OK);
+                            MessageBox.Show("Select the company entry!", "Error!", MessageBoxButton.OK);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Select the company entry!", "Error!", MessageBoxButton.OK);
-                    }
 
+                    }
                 }
                 );
         }
