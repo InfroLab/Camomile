@@ -5,14 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Camomile"
         mc:Ignorable="d"
-        Title="Camomile and Partners" Height="250" Width="750">
-    <Grid Background="#FF070525">
+        Title="Camomile and Partners" Height="500" Width="1000" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="Background" Value="#FF3F3F46"/>
+            <Setter Property="Foreground" Value="#FFE6E6E6" />
+            <Setter Property="BorderBrush" Value="#00000000" />
+            <Setter Property="MinWidth" Value="75" />
+            <Setter Property="MinHeight" Value="25" />
+        </Style>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="Background" Value="#FF3F3F46"/>
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Background" Value="#FF3F3F46"/>
+            <Setter Property="Foreground" Value="#FFE6E6E6"/>
+            <Setter Property="BorderBrush" Value="#00000000"/>
+            <Setter Property="Width" Value="Auto"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#FF1E1E1E"/>
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="Background" Value="#FF252526"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="Foreground" Value="#FFE6E6E6" />
+            <Setter Property="SelectionMode" Value="Single" />
+        </Style>
+    </Window.Resources>
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.75*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="CompanyColumn" Grid.Column="0">
-            <ListView HorizontalAlignment="Stretch" Height="150" Margin="10" VerticalAlignment="Top" Background="Gainsboro" 
+            <ListView HorizontalAlignment="Stretch" Height="150" Margin="10" VerticalAlignment="Top" 
                   ItemsSource="{Binding Companies}"
                  SelectedItem="{Binding SelectedCompany, Mode=TwoWay}">
                 <ListView.View>
@@ -29,7 +58,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="UserColumn" Grid.Column="1">
-            <ListView HorizontalAlignment="Stretch" Height="150" Margin="10" VerticalAlignment="Top" Background="Gainsboro" 
+            <ListView HorizontalAlignment="Stretch" Height="150" Margin="10" VerticalAlignment="Top" 
                   ItemsSource="{Binding Users}"
                  SelectedItem="{Binding SelectedUser, Mode=TwoWay}">
                 <ListView.View>

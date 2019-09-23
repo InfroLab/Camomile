@@ -6,6 +6,37 @@
         xmlns:local="clr-namespace:Camomile"
         mc:Ignorable="d"
         Title="Edit company" Height="250" Width="230">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#FF252526"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="Foreground" Value="#FFE6E6E6" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="Background" Value="#FF3F3F46"/>
+            <Setter Property="Foreground" Value="#FFE6E6E6" />
+            <Setter Property="BorderBrush" Value="#00000000" />
+            <Setter Property="MinWidth" Value="75" />
+            <Setter Property="MinHeight" Value="25" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="Background" Value="#FF3F3F46"/>
+            <Setter Property="Foreground" Value="#FFE6E6E6" />
+            <Setter Property="BorderBrush" Value="#00000000" />
+            <Setter Property="MinWidth" Value="75" />
+            <Setter Property="MinHeight" Value="25" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="#FF252526"/>
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="Foreground" Value="#FFE6E6E6" />
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#FF1E1E1E"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Button x:Name="EditButton" IsDefault="True" Content="Apply changes" HorizontalAlignment="Left" Height="20" Margin="10,120,0,0" VerticalAlignment="Top" Width="98" Click="EditButton_Click"/>
         <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Height="20" Margin="113,120,0,0" VerticalAlignment="Top" Width="98"/>
