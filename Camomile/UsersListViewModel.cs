@@ -25,8 +25,6 @@ namespace Camomile
         }
         public UsersListViewModel()
         {
-            Users = Database.GetUsers();
-
             AddUserCommand = new Command(
                 execute: (obj) =>
                 {

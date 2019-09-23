@@ -24,7 +24,10 @@ namespace Camomile
                 if(value != null)
                 {
                     Database.GetUsersByCompany(value.Id);
-                    UsersListViewModel.CurrentCompanyId = value.Id;
+                    if (SelectedCompany.ContractStatus == "Opened")
+                    {
+                        UsersListViewModel.CurrentCompanyId = value.Id;
+                    }
                 }
                 else
                 {

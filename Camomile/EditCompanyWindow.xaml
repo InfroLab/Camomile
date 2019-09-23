@@ -29,7 +29,6 @@
             <Setter Property="MinHeight" Value="25" />
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="Background" Value="#FF252526"/>
             <Setter Property="FontFamily" Value="Segoe UI Light" />
             <Setter Property="Foreground" Value="#FFE6E6E6" />
         </Style>
