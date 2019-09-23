@@ -6,8 +6,25 @@ namespace Camomile
     public class CompaniesListViewModel : ViewModel
     {
         private CompanyViewModel selectedCompany;
+        private ObservableCollection<CompanyViewModel> companies;
 
-        public ObservableCollection<CompanyViewModel> Companies { get; set; }
+        public ObservableCollection<CompanyViewModel> Companies
+        {
+            //The list showing collection contents
+            //is not updating without this notification
+            get
+            {
+                return companies;
+            }
+            set
+            {
+                if (companies != value)
+                {
+                    companies = value;
+                    OnPropertyChanged("Companies");
+                }
+            }
+        }
         public CompanyViewModel SelectedCompany
         {
             get
