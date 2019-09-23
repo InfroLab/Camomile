@@ -8,14 +8,13 @@ namespace Camomile
     /// </summary>
     public partial class EditUserWindow : Window
     {
-        public EditUserWindow(int id, string name, string login, string password, int companyId)
+        public EditUserWindow(int id, string name, string login, string password)
         {
             InitializeComponent();
             Id = id;
             Name = name;
             Login = login;
             Password = password;
-            CompanyId = companyId;
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -37,11 +36,6 @@ namespace Camomile
         {
             get { return PasswordBox.Text; }
             set { PasswordBox.Text = value; }
-        }
-        public int CompanyId
-        {
-            get { return Convert.ToInt32(CompanyIdBox.Text); }
-            set { CompanyIdBox.Text = Convert.ToString(value); }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Camomile
     {
         private UserViewModel selectedUser;
         public static ObservableCollection<UserViewModel> Users { get; set; }
-        public static int CurrentCompanyId;
+        public static int CurrentCompanyId = 0;
         public UserViewModel SelectedUser
         {
             get
@@ -25,21 +25,29 @@ namespace Camomile
         }
         public UsersListViewModel()
         {
+            Users = new ObservableCollection<UserViewModel>();
             AddUserCommand = new Command(
                 execute: (obj) =>
                 {
-                    AddUserWindow addUserWindow = new AddUserWindow();
-
-                    if(addUserWindow.ShowDialog() == true)
+                    if (CurrentCompanyId == 0)
                     {
-                        if(addUserWindow.Name != "" && addUserWindow.Login != "" && addUserWindow.Password != "" && addUserWindow.CompanyId > -1)
+                        MessageBox.Show("Select company first!", "Error!", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        AddUserWindow addUserWindow = new AddUserWindow();
+
+                        if (addUserWindow.ShowDialog() == true)
                         {
-                            Database.AddUser(new User { Name = addUserWindow.Name, Login = addUserWindow.Login, Password = addUserWindow.Password, CompanyId = addUserWindow.CompanyId });
-                            Database.GetUsersByCompany(CurrentCompanyId);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Incorrect input values!", "Error!", MessageBoxButton.OK);
+                            if (addUserWindow.Name != "" && addUserWindow.Login != "" && addUserWindow.Password != "")
+                            {
+                                Database.AddUser(new User { Name = addUserWindow.Name, Login = addUserWindow.Login, Password = addUserWindow.Password, CompanyId = CurrentCompanyId });
+                                Database.GetUsersByCompany(CurrentCompanyId);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect input values!", "Error!", MessageBoxButton.OK);
+                            }
                         }
                     }
                 }
@@ -52,6 +60,10 @@ namespace Camomile
                         Database.RemoveUser(SelectedUser.Id);
                         Database.GetUsersByCompany(CurrentCompanyId);
                     }
+                    else
+                    {
+                        MessageBox.Show("Select the user entry!", "Error!", MessageBoxButton.OK);
+                    }
                 }
                 );
             EditUserCommand = new Command(
@@ -59,14 +71,13 @@ namespace Camomile
                 {
                     if (selectedUser != null)
                     {
-                        EditUserWindow editUserWindow = new EditUserWindow(SelectedUser.Id, SelectedUser.Name, SelectedUser.Login, SelectedUser.Password, SelectedUser.CompanyId);
-                        int editIndex = Users.IndexOf(SelectedUser);
+                        EditUserWindow editUserWindow = new EditUserWindow(SelectedUser.Id, SelectedUser.Name, SelectedUser.Login, SelectedUser.Password);
 
                         if (editUserWindow.ShowDialog() == true)
                         {
-                            if (editUserWindow.Name != "" && editUserWindow.Login != "" && editUserWindow.Password != "" && editUserWindow.CompanyId > -1)
+                            if (editUserWindow.Name != "" && editUserWindow.Login != "" && editUserWindow.Password != "")
                             {
-                                Database.UpdateUser(new User { Id = editUserWindow.Id, Name = editUserWindow.Name, Login = editUserWindow.Login, Password = editUserWindow.Password, CompanyId = editUserWindow.CompanyId });
+                                Database.UpdateUser(new User { Id = editUserWindow.Id, Name = editUserWindow.Name, Login = editUserWindow.Login, Password = editUserWindow.Password, CompanyId = CurrentCompanyId });
                                 Database.GetUsersByCompany(CurrentCompanyId);
                             }
                             else

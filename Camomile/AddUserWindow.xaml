@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Camomile"
         mc:Ignorable="d"
-        Title="Добавить нового пользователя" Height="137" Width="435">
+        Title="Добавить нового пользователя" Height="150" Width="330">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="#FF252526"/>
@@ -19,6 +19,7 @@
             <Setter Property="BorderBrush" Value="#00000000" />
             <Setter Property="MinWidth" Value="75" />
             <Setter Property="MinHeight" Value="25" />
+            <Setter Property="Margin" Value="10" />
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="FontFamily" Value="Segoe UI Light" />
@@ -37,16 +38,15 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Button x:Name="AddButton" IsDefault="True" Content="Add" HorizontalAlignment="Left" Height="20" Margin="113,76,0,0" VerticalAlignment="Top" Width="98" Click="AddButton_Click"/>
-        <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Height="20" Margin="216,76,0,0" VerticalAlignment="Top" Width="98"/>
         <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="21" Margin="10,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
         <TextBox x:Name="LoginBox" HorizontalAlignment="Left" Height="21" Margin="113,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
         <TextBox x:Name="PasswordBox" HorizontalAlignment="Left" Height="21" Margin="216,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-        <TextBox x:Name="CompanyIdBox" HorizontalAlignment="Left" Height="21" Margin="319,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="10,26,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="98"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="113,26,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="98"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="216,26,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="98"/>
-        <TextBlock HorizontalAlignment="Left" Height="19" Margin="319,26,0,0" TextWrapping="Wrap" Text="CompanyID" VerticalAlignment="Top" Width="98"/>
-
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button x:Name="AddButton" IsDefault="True" Content="Add" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="98" Click="AddButton_Click"/>
+            <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="98"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -68,6 +68,11 @@ namespace Camomile
                     {
                         Database.RemoveCompany(SelectedCompany.Id);
                         Companies = Database.GetCompanies();
+                        UsersListViewModel.CurrentCompanyId = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Select the company entry!", "Error!", MessageBoxButton.OK);
                     }
                 }
                 );
@@ -78,7 +83,6 @@ namespace Camomile
                     if (selectedCompany != null)
                     {
                         EditCompanyWindow editCompanyWindow = new EditCompanyWindow(SelectedCompany.Id, SelectedCompany.Name, SelectedCompany.ContractStatus);
-                        int editIndex = Companies.IndexOf(SelectedCompany);
 
                         if (editCompanyWindow.ShowDialog() == true)
                         {

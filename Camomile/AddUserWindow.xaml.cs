@@ -41,9 +41,5 @@ namespace Camomile
         {
             get { return PasswordBox.Text; }
         }
-        public int CompanyId
-        {
-            get { return Convert.ToInt32(CompanyIdBox.Text); }
-        }
     }
 }

@@ -37,8 +37,6 @@ namespace Camomile
         }
         public static void GetUsersByCompany(int id)
         {
-            ObservableCollection<UserViewModel> users = new ObservableCollection<UserViewModel>();
-
             using (DataContext db = new DataContext())
             {
                 var table = from u in db.Users

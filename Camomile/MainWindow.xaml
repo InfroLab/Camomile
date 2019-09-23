@@ -66,7 +66,6 @@
                         <GridViewColumn Width="Auto" Header="User Name" DisplayMemberBinding="{Binding Path=Name}" />
                         <GridViewColumn Width="Auto" Header="Login" DisplayMemberBinding="{Binding Path=Login}" />
                         <GridViewColumn Width="Auto" Header="Password" DisplayMemberBinding="{Binding Path=Password}" />
-                        <GridViewColumn Width="Auto" Header="Company ID" DisplayMemberBinding="{Binding Path=CompanyId}" />
                     </GridView>
                 </ListView.View>
             </ListView>
