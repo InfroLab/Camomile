@@ -33,7 +33,6 @@
             <Setter Property="FontFamily" Value="Segoe UI Light" />
             <Setter Property="Foreground" Value="#FFE6E6E6" />
         </Style>
-        <Style TargetType="{x:Type Popup}"/>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="#FF1E1E1E"/>
         </Style>
@@ -78,111 +77,6 @@
                                                 <Path x:Name="Arrow" Data="F1M0,0L2.667,2.66665 5.3334,0 5.3334,-1.78168 2.6667,0.88501 0,-1.78168 0,0z" Fill="#FF606060" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center"/>
                                             </Border>
                                         </Border>
-                                        <ControlTemplate.Triggers>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter Property="Background" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="Background" TargetName="splitBorder" Value="#FF252526"/>
-                                                <Setter Property="BorderBrush" TargetName="splitBorder" Value="#FF252526"/>
-                                            </MultiDataTrigger>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Fill" TargetName="Arrow" Value="Black"/>
-                                            </Trigger>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="false"/>
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter Property="Background" TargetName="templateRoot">
-                                                    <Setter.Value>
-                                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                                            <GradientStop Color="#FF252526" Offset="0"/>
-                                                            <GradientStop Color="#FF252526" Offset="1"/>
-                                                        </LinearGradientBrush>
-                                                    </Setter.Value>
-                                                </Setter>
-                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF252526"/>
-                                            </MultiDataTrigger>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter Property="Background" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="Background" TargetName="splitBorder">
-                                                    <Setter.Value>
-                                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                                            <GradientStop Color="#FF252526" Offset="0"/>
-                                                            <GradientStop Color="#FF252526" Offset="1"/>
-                                                        </LinearGradientBrush>
-                                                    </Setter.Value>
-                                                </Setter>
-                                                <Setter Property="BorderBrush" TargetName="splitBorder" Value="#FF252526"/>
-                                            </MultiDataTrigger>
-                                            <Trigger Property="IsPressed" Value="True">
-                                                <Setter Property="Fill" TargetName="Arrow" Value="Black"/>
-                                            </Trigger>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="false"/>
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter Property="Background" TargetName="templateRoot">
-                                                    <Setter.Value>
-                                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                                            <GradientStop Color="#FF252526" Offset="0"/>
-                                                            <GradientStop Color="#FF252526" Offset="1"/>
-                                                        </LinearGradientBrush>
-                                                    </Setter.Value>
-                                                </Setter>
-                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF569DE5"/>
-                                            </MultiDataTrigger>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter Property="Background" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="Background" TargetName="splitBorder">
-                                                    <Setter.Value>
-                                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                                            <GradientStop Color="#FF252526" Offset="0"/>
-                                                            <GradientStop Color="#FF252526" Offset="1"/>
-                                                        </LinearGradientBrush>
-                                                    </Setter.Value>
-                                                </Setter>
-                                                <Setter Property="BorderBrush" TargetName="splitBorder" Value="#FF252526"/>
-                                            </MultiDataTrigger>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="Fill" TargetName="Arrow" Value="#FF252526"/>
-                                            </Trigger>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="false"/>
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter Property="Background" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF252526"/>
-                                            </MultiDataTrigger>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter Property="Background" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF252526"/>
-                                                <Setter Property="Background" TargetName="splitBorder" Value="#FF252526"/>
-                                                <Setter Property="BorderBrush" TargetName="splitBorder" Value="#FF252526"/>
-                                            </MultiDataTrigger>
-                                        </ControlTemplate.Triggers>
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>

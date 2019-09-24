@@ -8,6 +8,7 @@ namespace Camomile
         private UserViewModel selectedUser;
         public static ObservableCollection<UserViewModel> Users { get; set; }
         public static int CurrentCompanyId = 0;
+        public static string CurrentCompanyStatus = "";
         public UserViewModel SelectedUser
         {
             get
@@ -32,6 +33,10 @@ namespace Camomile
                     if (CurrentCompanyId == 0)
                     {
                         MessageBox.Show("Select company first!", "Error!", MessageBoxButton.OK);
+                    }
+                    else if (CurrentCompanyStatus != "Opened")
+                    {
+                        MessageBox.Show("Selected company does not have an opened contract.!", "Error!", MessageBoxButton.OK);
                     }
                     else
                     {

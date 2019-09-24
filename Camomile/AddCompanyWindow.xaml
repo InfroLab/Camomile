@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Camomile"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Camomile.AddCompanyWindow"
         mc:Ignorable="d"
-        Title="Add new company" Height="250" Width="230">
+        Title="Add new company" Height="250" Width="230" ResizeMode="CanMinimize">
     <Window.Resources>
         <ControlTemplate x:Key="CustomToggleButton" TargetType="{x:Type ToggleButton}">
             <Grid>

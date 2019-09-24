@@ -44,6 +44,7 @@ namespace Camomile
                     if (SelectedCompany.ContractStatus == "Opened")
                     {
                         UsersListViewModel.CurrentCompanyId = value.Id;
+                        UsersListViewModel.CurrentCompanyStatus = value.ContractStatus;
                     }
                 }
                 else
@@ -86,6 +87,7 @@ namespace Camomile
                         Database.RemoveCompany(SelectedCompany.Id);
                         Companies = Database.GetCompanies();
                         UsersListViewModel.CurrentCompanyId = 0;
+                        UsersListViewModel.CurrentCompanyStatus = "";
                     }
                     else
                     {
@@ -106,6 +108,7 @@ namespace Camomile
                             if (editCompanyWindow.Name != "" && editCompanyWindow.ContractStatus != "")
                             {
                                 Database.UpdateCompany(new Company { Id = editCompanyWindow.Id, ContractStatus = editCompanyWindow.ContractStatus, Name = editCompanyWindow.Name });
+                                UsersListViewModel.CurrentCompanyStatus = editCompanyWindow.ContractStatus;
                                 Companies = Database.GetCompanies();
                             }
                             else
