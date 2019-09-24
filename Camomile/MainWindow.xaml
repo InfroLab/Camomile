@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Camomile"
         mc:Ignorable="d"
-        Title="Camomile and Partners" Height="500" Width="1000" ResizeMode="CanMinimize">
+        Title="Camomile and Partners - Companies and users" Height="500" Width="1000" ResizeMode="CanMinimize">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Segoe UI Light" />
@@ -46,8 +46,8 @@
                  SelectedItem="{Binding SelectedCompany, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="Auto" Header="Company Name" DisplayMemberBinding="{Binding Path=Name}" />
-                        <GridViewColumn Width="Auto" Header="Contract Status" DisplayMemberBinding="{Binding Path=ContractStatus}" />
+                        <GridViewColumn Header="Company Name" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Header="Contract Status" DisplayMemberBinding="{Binding Path=ContractStatus}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -63,9 +63,9 @@
                  SelectedItem="{Binding SelectedUser, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="Auto" Header="User Name" DisplayMemberBinding="{Binding Path=Name}" />
-                        <GridViewColumn Width="Auto" Header="Login" DisplayMemberBinding="{Binding Path=Login}" />
-                        <GridViewColumn Width="Auto" Header="Password" DisplayMemberBinding="{Binding Path=Password}" />
+                        <GridViewColumn Header="User Name" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Header="Login" DisplayMemberBinding="{Binding Path=Login}" />
+                        <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Path=Password}" />
                     </GridView>
                 </ListView.View>
             </ListView>
