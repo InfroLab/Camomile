@@ -22,7 +22,7 @@ namespace Camomile
         }
         public static ObservableCollection<ElectricSubViewModel> GetElectricSubs()
         {
-            ObservableCollection<ElectricSubViewModel> houses = new ObservableCollection<ElectricSubViewModel>();
+            ObservableCollection<ElectricSubViewModel> electricSubs = new ObservableCollection<ElectricSubViewModel>();
 
             using (DataContext db = new DataContext())
             {
@@ -30,10 +30,25 @@ namespace Camomile
 
                 foreach (var r in table)
                 {
-                    houses.Add(new HouseViewModel { Id = r.Id, Address = r.Address, Features = r.Features });
+                    electricSubs.Add(new ElectricSubViewModel { Id = r.Id, Address = r.Address, Features = r.Features });
                 }
             }
-            return houses;
+            return electricSubs;
+        }
+        public static ObservableCollection<GasPlantViewModel> GetGasPlants()
+        {
+            ObservableCollection<GasPlantViewModel> gasPlants = new ObservableCollection<GasPlantViewModel>();
+
+            using (DataContext db = new DataContext())
+            {
+                var table = db.GasPlants;
+
+                foreach (var r in table)
+                {
+                    gasPlants.Add(new GasPlantViewModel { Id = r.Id, Address = r.Address, Features = r.Features });
+                }
+            }
+            return gasPlants;
         }
         //public static ObservableCollection<UserViewModel> GetUsers()
         //{
@@ -82,11 +97,11 @@ namespace Camomile
                 db.SaveChanges();
             }
         }
-        public static void AddElectricSub(House e)
+        public static void AddElectricSub(ElectricSub e)
         {
             using (DataContext db = new DataContext())
             {
-                db.Houses.Add(e);
+                db.ElectricSubs.Add(e);
                 db.SaveChanges();
             }
         }
@@ -94,33 +109,28 @@ namespace Camomile
         {
             using (DataContext db = new DataContext())
             {
-                var e = db.Houses.Find(id);
-                db.Houses.Remove(e);
+                var e = db.ElectricSubs.Find(id);
+                db.ElectricSubs.Remove(e);
                 db.SaveChanges();
             }
         }
-        //public static void RemoveCompany(int id)
-        //{
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var c = db.Companies.Find(id);
-        //        db.Companies.Remove(c);
-        //        db.SaveChanges();
-        //    }
-        //}
-        //public static void UpdateUser(User u)
-        //{
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var updatedUser = db.Users.Find(u.Id);
-        //        //Changing every user property in turn
-        //        updatedUser.Name = u.Name;
-        //        updatedUser.Login = u.Login;
-        //        updatedUser.Password = u.Password;
-        //        updatedUser.CompanyId = u.CompanyId;
-        //        db.SaveChanges();
-        //    }
-        //}
+        public static void AddGasPlant(GasPlant g)
+        {
+            using (DataContext db = new DataContext())
+            {
+                db.GasPlants.Add(g);
+                db.SaveChanges();
+            }
+        }
+        public static void RemoveGasPlant(int id)
+        {
+            using (DataContext db = new DataContext())
+            {
+                var g = db.GasPlants.Find(id);
+                db.GasPlants.Remove(g);
+                db.SaveChanges();
+            }
+        }
         //public static void UpdateCompany(Company c)
         //{
         //    using (DataContext db = new DataContext())

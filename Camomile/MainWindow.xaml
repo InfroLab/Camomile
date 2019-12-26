@@ -142,12 +142,12 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" x:Name="ElectricSubStack">
                     <Label VerticalAlignment="Top">Список электроподстанций</Label>
                     <ListView HorizontalAlignment="Stretch" Height="150" Margin="10" VerticalAlignment="Top" ItemsSource="{Binding ElectricSubs}" SelectedItem="{Binding SelectedElectricSub, Mode=TwoWay}" Width="500">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Адрес" DisplayMemberBinding="{Binding Adress}" />
+                                <GridViewColumn Header="Адрес" DisplayMemberBinding="{Binding Address}" />
                                 <GridViewColumn Header="Характеристики" DisplayMemberBinding="{Binding Features}" />
                             </GridView>
                         </ListView.View>
@@ -158,7 +158,7 @@
                         <Button Command="{Binding DeleteElectricSubCommand}" Content="Удалить" Margin="10" Height="20" Width="50"/>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch"  x:Name="GasPlantStack">
                     <Label >Список газораспределительных установок</Label>
                     <ListView HorizontalAlignment="Stretch" Height="150" Margin="10" VerticalAlignment="Top" ItemsSource="{Binding GasPlants}" SelectedItem="{Binding SelectedGasPlant, Mode=TwoWay}" Width="500">
                         <ListView.View>

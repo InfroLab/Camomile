@@ -1,6 +1,6 @@
 ﻿namespace Camomile
 {
-    public class ElectricSubViewModel : ViewModel
+    public class GasPlantViewModel : ViewModel
     {
         private int id;
         private string address;

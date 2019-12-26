@@ -13,6 +13,8 @@ namespace Camomile
             InitializeComponent();
 
             HouseStack.DataContext = new HousesListViewModel();
+            ElectricSubStack.DataContext = new ElectricSubsListViewModel();
+            GasPlantStack.DataContext = new GasPlantsListViewModel();
         }
 
     }

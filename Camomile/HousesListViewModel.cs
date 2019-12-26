@@ -3,69 +3,69 @@ using System.Windows;
 
 namespace Camomile
 {
-    public class ElectricSubsListViewModel : ViewModel
+    public class HousesListViewModel : ViewModel
     {
-        private ElectricSubViewModel selectedElectricSub;
-        private ObservableCollection<ElectricSubViewModel> electricSubs;
-        public static int CurrentElectricSubId = 1;
+        private HouseViewModel selectedHouse;
+        private ObservableCollection<HouseViewModel> houses;
+        public static int CurrentHouseId = 1;
 
-        public ObservableCollection<ElectricSubViewModel> ElectricSubs
+        public ObservableCollection<HouseViewModel> Houses
         {
             //The list showing collection contents
             //is not updating without this notification
             get
             {
-                return electricSubs;
+                return houses;
             }
             set
             {
-                if (electricSubs != value)
+                if (houses != value)
                 {
-                    electricSubs = value;
-                    OnPropertyChanged("ElectricSubs");
+                    houses = value;
+                    OnPropertyChanged("Houses");
                 }
             }
         }
-        public ElectricSubViewModel SelectedElectricSub
+        public HouseViewModel SelectedHouse
         {
             get
             {
-                return selectedElectricSub;
+                return selectedHouse;
             }
             set
             {
-                if (selectedElectricSub != value)
+                if (selectedHouse != value)
                 {
-                    selectedElectricSub = value;
-                    OnPropertyChanged("SelectedElectricSub");
+                    selectedHouse = value;
+                    OnPropertyChanged("SelectedHouse");
                 }
             }
         }
 
-        public ElectricSubsListViewModel()
+        public HousesListViewModel()
         {
-            ElectricSubs = Database.GetElectricSubs();
+            Houses = Database.GetHouses();
 
-            AddElectricSubCommand = new Command(
+            AddHouseCommand = new Command(
                 execute: (obj) =>
                 {
-                    AddElectricSubWindow aesw = new AddElectricSubWindow();
+                    AddHouseWindow ahw = new AddHouseWindow();
 
-                    if (aesw.ShowDialog() == true)
+                    if (ahw.ShowDialog() == true)
                     {
-                        Database.AddElectricSub(new ElectricSub { Address = aesw.Address, Features = aesw.Features });
-                        ElectricSubs = Database.GetElectricSubs();
+                        Database.AddHouse(new House { Address = ahw.Address, Antenna = ahw.Antenna, CabelTV = ahw.CabelTV, ColdWater = ahw.ColdWater, Delivery = ahw.Delivery, Elevator = ahw.Elevator, EntranceNumber = ahw.EntranceNumber, Flats = ahw.Flats, Floors = ahw.Floors, Gas = ahw.Gas, HotWater = ahw.HotWater, ProjectNumber = ahw.ProjectNumber, Radio = ahw.Radio, Settlement = ahw.Settlement, Telephone = ahw.Telephone });
+                        Houses = Database.GetHouses();
                     }
                 }
                 );
 
-            DeleteElectricSubCommand = new Command(
+            DeleteHouseCommand = new Command(
                 execute: (obj) =>
                 {
-                    if(SelectedElectricSub != null)
+                    if (SelectedHouse != null)
                     {
-                        Database.RemoveElectricSub(SelectedElectricSub.Id);
-                        ElectricSubs = Database.GetElectricSubs();
+                        Database.RemoveHouse(SelectedHouse.Id);
+                        Houses = Database.GetHouses();
                     }
                     else
                     {
@@ -74,10 +74,10 @@ namespace Camomile
                 }
                 );
 
-            EditElectricSubCommand = new Command(
+            EditHouseCommand = new Command(
                 execute: (obj) =>
                 {
-                    if (SelectedElectricSub != null)
+                    if (SelectedHouse != null)
                     {
                     }
                     else
@@ -86,8 +86,8 @@ namespace Camomile
                 }
                 );
         }
-        public Command AddElectricSubCommand { private set; get; }
-        public Command DeleteElectricSubCommand { private set; get; }
-        public Command EditElectricSubCommand { private set; get; }
+        public Command AddHouseCommand { private set; get; }
+        public Command DeleteHouseCommand { private set; get; }
+        public Command EditHouseCommand { private set; get; }
     }
 }

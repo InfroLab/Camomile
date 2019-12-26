@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddGasPlantWindow.xaml.cs">
+      <DependentUpon>AddGasPlantWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddElectricSubWindow.xaml.cs">
       <DependentUpon>AddElectricSubWindow.xaml</DependentUpon>
     </Compile>
@@ -70,14 +73,21 @@
       <DependentUpon>AddHouseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Command.cs" />
+    <Compile Include="GasPlantsListViewModel.cs" />
+    <Compile Include="GasPlantViewModel.cs" />
+    <Compile Include="GasPlant.cs" />
     <Compile Include="ElectricSub.cs" />
     <Compile Include="House.cs" />
-    <Compile Include="ElectricSubListViewModel.cs" />
+    <Compile Include="ElectricSubsListViewModel.cs" />
     <Compile Include="ElectricSubViewModel.cs" />
     <Compile Include="HouseViewModel.cs" />
     <Compile Include="HousesListViewModel.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="ViewModel.cs" />
+    <Page Include="AddGasPlantWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddElectricSubWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

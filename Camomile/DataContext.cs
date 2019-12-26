@@ -8,6 +8,7 @@ namespace Camomile
         public DataContext() : base("CamomileDB"){ }
 
         public DbSet<House> Houses { get; set; }
-        public DbSet<ElectriSub> ElectriSubs { get; set; }
+        public DbSet<ElectricSub> ElectricSubs { get; set; }
+        public DbSet<GasPlant> GasPlants { get; set; }
     }
 }
