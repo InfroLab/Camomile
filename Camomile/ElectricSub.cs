@@ -3,10 +3,10 @@
 /// </summary>
 namespace Camomile
 {
-    public class Company
+    public class ElectricSub
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string ContractStatus { get; set; }
+        public string Address { get; set; }
+        public string Features { get; set; }
     }
 }

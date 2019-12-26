@@ -17,9 +17,9 @@ namespace Camomile
     /// <summary>
     /// Логика взаимодействия для AddCompanyWindow.xaml
     /// </summary>
-    public partial class AddCompanyWindow : Window
+    public partial class AddElectricSubWindow : Window
     {
-        public AddCompanyWindow()
+        public AddElectricSubWindow()
         {
             InitializeComponent();
         }
@@ -29,16 +29,16 @@ namespace Camomile
             DialogResult = true;
         }
 
-        public string Name
-        {
-            get { return NameBox.Text; }
-        }
-        public string ContractStatus
+        public string Address
         {
             get
-            {
-                return ContractStatusCombo.Text;
-            }
+            { return AddressBox.Text; }
+        }
+
+        public string Features
+        {
+            get
+            { return FeaturesBox.Text; }
         }
     }
 }

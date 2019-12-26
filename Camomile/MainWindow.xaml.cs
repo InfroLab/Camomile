@@ -12,8 +12,8 @@ namespace Camomile
         {
             InitializeComponent();
 
-            CompanyColumn.DataContext = new CompaniesListViewModel();
-            UserColumn.DataContext = new UsersListViewModel();
+            HouseStack.DataContext = new HousesListViewModel();
         }
+
     }
 }
