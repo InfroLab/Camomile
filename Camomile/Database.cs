@@ -50,36 +50,21 @@ namespace Camomile
             }
             return gasPlants;
         }
-        //public static ObservableCollection<UserViewModel> GetUsers()
-        //{
-        //    ObservableCollection<UserViewModel> users = new ObservableCollection<UserViewModel>();
+        public static ObservableCollection<FlatViewModel> GetFlats()
+        {
+            ObservableCollection<FlatViewModel> flats = new ObservableCollection<FlatViewModel>();
 
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var table = db.Users;
+            using (DataContext db = new DataContext())
+            {
+                var table = db.Flats;
 
-        //        foreach (var r in table)
-        //        {
-        //            users.Add(new UserViewModel { Id = r.Id, Name = r.Name, Login = r.Login, Password = r.Password, CompanyId = r.CompanyId });
-        //        }
-        //    }
-        //    return users;
-        //}
-        //public static void GetUsersByCompany(int id)
-        //{
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var table = from u in db.Users
-        //                    where u.CompanyId == id
-        //                    select u;
-
-        //        UsersListViewModel.Users.Clear();
-        //        foreach (var r in table)
-        //        {
-        //            UsersListViewModel.Users.Add(new UserViewModel { Id = r.Id, Name = r.Name, Login = r.Login, Password = r.Password, CompanyId = r.CompanyId });
-        //        }
-        //    }
-        //}
+                foreach (var r in table)
+                {
+                    flats.Add(new FlatViewModel { Id = r.Id, Address = r.Address, Area=r.Area, AreaPerPerson=r.AreaPerPerson, Balcony=r.Balcony, Registration=r.Registration, Renter=r.Renter, Rooms=r.Rooms });
+                }
+            }
+            return flats;
+        }
         public static void AddHouse(House h)
         {
             using (DataContext db = new DataContext())
@@ -131,16 +116,166 @@ namespace Camomile
                 db.SaveChanges();
             }
         }
-        //public static void UpdateCompany(Company c)
-        //{
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var updatedCompany = db.Companies.Find(c.Id);
-        //        //Changing every company property in turn
-        //        updatedCompany.Name = c.Name;
-        //        updatedCompany.ContractStatus = c.ContractStatus;
-        //        db.SaveChanges();
-        //    }
-        //}
+        public static void AddFlat(Flat f)
+        {
+            using (DataContext db = new DataContext())
+            {
+                db.Flats.Add(f);
+                db.SaveChanges();
+            }
+        }
+        public static void RemoveFlat(int id)
+        {
+            using (DataContext db = new DataContext())
+            {
+                var f = db.Flats.Find(id);
+                db.Flats.Remove(f);
+                db.SaveChanges();
+            }
+        }
+        public static ObservableCollection<HouseViewModel> GetHousesByAddress(string Address)
+        {
+            using (DataContext db = new DataContext())
+            {
+                if (Address != "")
+                {
+                    var table = from record in db.Houses
+                                where record.Address == Address
+                                select record;
+
+                    ObservableCollection<HouseViewModel> houses = new ObservableCollection<HouseViewModel>();
+                    foreach (var r in table)
+                    {
+                        houses.Add(new HouseViewModel { Id = r.Id, Address = r.Address, Antenna = r.Antenna, CabelTV = r.CabelTV, ColdWater = r.ColdWater, Delivery = r.Delivery, Elevator = r.Elevator, EntranceNumber = r.EntranceNumber, Flats = r.Flats, Floors = r.Floors, Gas = r.Gas, HotWater = r.HotWater, ProjectNumber = r.ProjectNumber, Radio = r.Radio, Settlement = r.Settlement, Telephone = r.Telephone });
+                    }
+                    return houses;
+                }
+                else
+                {
+                    var table = db.Houses;
+
+                    ObservableCollection<HouseViewModel> houses = new ObservableCollection<HouseViewModel>();
+                    foreach (var r in table)
+                    {
+                        houses.Add(new HouseViewModel { Id = r.Id, Address = r.Address, Antenna = r.Antenna, CabelTV = r.CabelTV, ColdWater = r.ColdWater, Delivery = r.Delivery, Elevator = r.Elevator, EntranceNumber = r.EntranceNumber, Flats = r.Flats, Floors = r.Floors, Gas = r.Gas, HotWater = r.HotWater, ProjectNumber = r.ProjectNumber, Radio = r.Radio, Settlement = r.Settlement, Telephone = r.Telephone });
+                    }
+                    return houses;
+                }
+            }
+        }
+        public static ObservableCollection<ElectricSubViewModel> GetElectricSubsByAddress(string Address)
+        {
+            using (DataContext db = new DataContext())
+            {
+                if (Address != "")
+                {
+                    var table = from record in db.ElectricSubs
+                                where record.Address == Address
+                                select record;
+
+                    ObservableCollection<ElectricSubViewModel> electricSubs = new ObservableCollection<ElectricSubViewModel>();
+                    foreach (var r in table)
+                    {
+                        electricSubs.Add(new ElectricSubViewModel { Id = r.Id, Address = r.Address, Features = r.Features });
+                    }
+                    return electricSubs;
+                }
+                else
+                {
+                    var table = db.ElectricSubs;
+
+                    ObservableCollection<ElectricSubViewModel> electricSubs = new ObservableCollection<ElectricSubViewModel>();
+                    foreach (var r in table)
+                    {
+                        electricSubs.Add(new ElectricSubViewModel { Id = r.Id, Address = r.Address, Features = r.Features });
+                    }
+                    return electricSubs;
+                }
+            }
+        }
+        public static ObservableCollection<FlatViewModel> GetFlatsByAddress(string Address)
+        {
+            using (DataContext db = new DataContext())
+            {
+                if (Address != "")
+                {
+                    var table = from record in db.Flats
+                                where record.Address == Address
+                                select record;
+
+                    ObservableCollection<FlatViewModel> flats = new ObservableCollection<FlatViewModel>();
+                    foreach (var r in table)
+                    {
+                        flats.Add(new FlatViewModel { Id = r.Id, Address = r.Address, Area = r.Area, AreaPerPerson = r.AreaPerPerson, Balcony = r.Balcony, Registration = r.Registration, Renter = r.Renter, Rooms = r.Rooms });
+                    }
+                    return flats;
+                }
+                else
+                {
+                    var table = db.Flats;
+
+                    ObservableCollection<FlatViewModel> flats = new ObservableCollection<FlatViewModel>();
+                    foreach (var r in table)
+                    {
+                        flats.Add(new FlatViewModel { Id = r.Id, Address = r.Address, Area = r.Area, AreaPerPerson = r.AreaPerPerson, Balcony = r.Balcony, Registration = r.Registration, Renter = r.Renter, Rooms = r.Rooms });
+                    }
+                    return flats;
+                }
+            }
+        }
+        public static ObservableCollection<GasPlantViewModel> GetGasPlantsByAddress(string Address)
+        {
+            using (DataContext db = new DataContext())
+            {
+                if (Address != "")
+                {
+                    var table = from record in db.GasPlants
+                                where record.Address == Address
+                                select record;
+
+                    ObservableCollection<GasPlantViewModel> gasPlants = new ObservableCollection<GasPlantViewModel>();
+                    foreach (var r in table)
+                    {
+                        gasPlants.Add(new GasPlantViewModel { Id = r.Id, Address = r.Address, Features = r.Features });
+                    }
+                    return gasPlants;
+                }
+                else
+                {
+                    var table = db.GasPlants;
+
+                    ObservableCollection<GasPlantViewModel> gasPlants = new ObservableCollection<GasPlantViewModel>();
+                    foreach (var r in table)
+                    {
+                        gasPlants.Add(new GasPlantViewModel { Id = r.Id, Address = r.Address, Features = r.Features });
+                    }
+                    return gasPlants;
+                }
+            }
+        }
+        public static void UpdateHouse(House h)
+        {
+            using (DataContext db = new DataContext())
+            {
+                var updatedHouse = db.Houses.Find(h.Id);
+                //Changing every company property in turn
+                updatedHouse.Address = h.Address;
+                updatedHouse.EntranceNumber = h.EntranceNumber;
+                updatedHouse.Floors = h.Floors;
+                updatedHouse.Flats = h.Flats;
+                updatedHouse.Elevator = h.Elevator;
+                updatedHouse.HotWater = h.HotWater;
+                updatedHouse.ColdWater = h.ColdWater;
+                updatedHouse.Gas = h.Gas;
+                updatedHouse.Antenna = h.Antenna;
+                updatedHouse.CabelTV = h.CabelTV;
+                updatedHouse.Telephone = h.Telephone;
+                updatedHouse.Radio = h.Radio;
+                updatedHouse.ProjectNumber = h.ProjectNumber;
+                updatedHouse.Settlement = h.Settlement;
+                updatedHouse.Delivery = h.Delivery;
+                db.SaveChanges();
+            }
+        }
     }
 }

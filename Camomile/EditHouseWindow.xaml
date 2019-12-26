@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Camomile"
-        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Camomile.AddHouseWindow"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Camomile.EditHouseWindow"
         mc:Ignorable="d"
-        Title="Добавить новый дом" Height="120" Width="1486" ResizeMode="CanMinimize">
+        Title="Изменить запись о доме" Height="120" Width="1486" ResizeMode="CanMinimize">
     <Window.Resources>
         <ControlTemplate x:Key="CustomToggleButton" TargetType="{x:Type ToggleButton}">
             <Grid>
@@ -257,7 +257,7 @@
                 <TextBox x:Name="DeliveryBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="AddButton" IsDefault="True" Content="Добавить" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="98" Click="AddButton_Click"/>
+                <Button x:Name="AddButton" IsDefault="True" Content="Изменить" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="98" Click="AddButton_Click"/>
                 <Button IsCancel="True" Content="Отменить" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="98"/>
             </StackPanel>
         </StackPanel>

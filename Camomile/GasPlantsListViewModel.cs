@@ -49,16 +49,22 @@ namespace Camomile
             AddGasPlantCommand = new Command(
                 execute: (obj) =>
                 {
-                    AddGasPlantWindow aesw = new AddGasPlantWindow();
+                    AddGasPlantWindow agpw = new AddGasPlantWindow();
 
-                    if (aesw.ShowDialog() == true)
+                    if (agpw.ShowDialog() == true)
                     {
-                        Database.AddGasPlant(new GasPlant { Address = aesw.Address, Features = aesw.Features });
+                        Database.AddGasPlant(new GasPlant { Address = agpw.Address, Features = agpw.Features });
                         GasPlants = Database.GetGasPlants();
                     }
                 }
                 );
 
+            SearchAddressCommand = new Command(
+                execute: (obj) =>
+                {
+                    GasPlants = Database.GetGasPlantsByAddress(Address);
+                }
+                );
             DeleteGasPlantCommand = new Command(
                 execute: (obj) =>
                 {
@@ -89,5 +95,6 @@ namespace Camomile
         public Command AddGasPlantCommand { private set; get; }
         public Command DeleteGasPlantCommand { private set; get; }
         public Command EditGasPlantCommand { private set; get; }
+        public Command SearchAddressCommand { private set; get; }
     }
 }

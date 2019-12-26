@@ -59,6 +59,13 @@ namespace Camomile
                 }
                 );
 
+            SearchAddressCommand = new Command(
+                execute: (obj) =>
+                {
+                    Houses = Database.GetHousesByAddress(Address);
+                }
+                );
+
             DeleteHouseCommand = new Command(
                 execute: (obj) =>
                 {
@@ -79,9 +86,16 @@ namespace Camomile
                 {
                     if (SelectedHouse != null)
                     {
+                        EditHouseWindow ehw = new EditHouseWindow(SelectedHouse.Id, SelectedHouse.Address, SelectedHouse.EntranceNumber, SelectedHouse.Floors, SelectedHouse.Flats, SelectedHouse.Elevator, SelectedHouse.HotWater, SelectedHouse.ColdWater, SelectedHouse.Gas, SelectedHouse.Antenna, SelectedHouse.CabelTV, SelectedHouse.Telephone, SelectedHouse.Radio, SelectedHouse.ProjectNumber, SelectedHouse.Settlement, SelectedHouse.Delivery);
+                        if (ehw.ShowDialog() == true)
+                        {
+                            Database.UpdateHouse(new House { Address = ehw.Address, Antenna = ehw.Antenna, CabelTV = ehw.CabelTV, ColdWater = ehw.ColdWater, Delivery = ehw.Delivery, Elevator = ehw.Elevator, EntranceNumber = ehw.EntranceNumber, Flats = ehw.Flats, Floors = ehw.Floors, Gas = ehw.Gas, HotWater = ehw.HotWater, ProjectNumber = ehw.ProjectNumber, Radio = ehw.Radio, Settlement = ehw.Settlement, Telephone = ehw.Telephone });
+                            Houses = Database.GetHouses();
+                        }
                     }
                     else
                     {
+                        MessageBox.Show("Выделите строчку в таблице домов!", "Ошибка!", MessageBoxButton.OK);
                     }
                 }
                 );
@@ -89,5 +103,6 @@ namespace Camomile
         public Command AddHouseCommand { private set; get; }
         public Command DeleteHouseCommand { private set; get; }
         public Command EditHouseCommand { private set; get; }
+        public Command SearchAddressCommand { private set; get; }
     }
 }

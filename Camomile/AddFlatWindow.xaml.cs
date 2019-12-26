@@ -17,9 +17,9 @@ namespace Camomile
     /// <summary>
     /// Логика взаимодействия для AddCompanyWindow.xaml
     /// </summary>
-    public partial class AddGasPlantWindow : Window
+    public partial class AddFlatWindow : Window
     {
-        public AddGasPlantWindow()
+        public AddFlatWindow()
         {
             InitializeComponent();
         }
@@ -34,11 +34,35 @@ namespace Camomile
             get
             { return AddressBox.Text; }
         }
-
-        public string Features
+        public int Rooms
         {
             get
-            { return FeaturesBox.Text; }
+            { return Convert.ToInt32(RoomsBox.Text); }
+        }
+        public string Renter
+        {
+            get
+            { return RenterBox.Text; }
+        }
+        public int Registration
+        {
+            get
+            { return Convert.ToInt32(RegistrationBox.Text); }
+        }
+        public int Area
+        {
+            get
+            { return Convert.ToInt32(AreaBox.Text); }
+        }
+        public int AreaPerPerson
+        {
+            get
+            { return Convert.ToInt32(AreaPerPersonBox.Text); }
+        }
+        public string Balcony
+        {
+            get
+            { return BalconyBox.Text; }
         }
     }
 }

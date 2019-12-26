@@ -10,5 +10,6 @@ namespace Camomile
         public DbSet<House> Houses { get; set; }
         public DbSet<ElectricSub> ElectricSubs { get; set; }
         public DbSet<GasPlant> GasPlants { get; set; }
+        public DbSet<Flat> Flats { get; set; }
     }
 }

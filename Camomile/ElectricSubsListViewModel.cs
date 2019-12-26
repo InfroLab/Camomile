@@ -59,6 +59,13 @@ namespace Camomile
                 }
                 );
 
+            SearchAddressCommand = new Command(
+                execute: (obj) =>
+                {
+                    ElectricSubs = Database.GetElectricSubsByAddress(Address);
+                }
+                );
+
             DeleteElectricSubCommand = new Command(
                 execute: (obj) =>
                 {
@@ -89,5 +96,6 @@ namespace Camomile
         public Command AddElectricSubCommand { private set; get; }
         public Command DeleteElectricSubCommand { private set; get; }
         public Command EditElectricSubCommand { private set; get; }
+        public Command SearchAddressCommand { private set; get; }
     }
 }
