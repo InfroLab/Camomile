@@ -89,7 +89,7 @@ namespace Camomile
                         EditHouseWindow ehw = new EditHouseWindow(SelectedHouse.Id, SelectedHouse.Address, SelectedHouse.EntranceNumber, SelectedHouse.Floors, SelectedHouse.Flats, SelectedHouse.Elevator, SelectedHouse.HotWater, SelectedHouse.ColdWater, SelectedHouse.Gas, SelectedHouse.Antenna, SelectedHouse.CabelTV, SelectedHouse.Telephone, SelectedHouse.Radio, SelectedHouse.ProjectNumber, SelectedHouse.Settlement, SelectedHouse.Delivery);
                         if (ehw.ShowDialog() == true)
                         {
-                            Database.UpdateHouse(new House { Address = ehw.Address, Antenna = ehw.Antenna, CabelTV = ehw.CabelTV, ColdWater = ehw.ColdWater, Delivery = ehw.Delivery, Elevator = ehw.Elevator, EntranceNumber = ehw.EntranceNumber, Flats = ehw.Flats, Floors = ehw.Floors, Gas = ehw.Gas, HotWater = ehw.HotWater, ProjectNumber = ehw.ProjectNumber, Radio = ehw.Radio, Settlement = ehw.Settlement, Telephone = ehw.Telephone });
+                            Database.UpdateHouse(new House { Id = ehw.Id, Address = ehw.Address, Antenna = ehw.Antenna, CabelTV = ehw.CabelTV, ColdWater = ehw.ColdWater, Delivery = ehw.Delivery, Elevator = ehw.Elevator, EntranceNumber = ehw.EntranceNumber, Flats = ehw.Flats, Floors = ehw.Floors, Gas = ehw.Gas, HotWater = ehw.HotWater, ProjectNumber = ehw.ProjectNumber, Radio = ehw.Radio, Settlement = ehw.Settlement, Telephone = ehw.Telephone });
                             Houses = Database.GetHouses();
                         }
                     }
