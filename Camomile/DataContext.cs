@@ -7,7 +7,7 @@ namespace Camomile
         //Personal note: I could use connection strings in AppConfig
         public DataContext() : base("CamomileDB"){ }
 
-        public DbSet<House> Houses { get; set; }
-        public DbSet<ElectriSub> ElectriSubs { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Company> Companies { get; set; }
     }
 }

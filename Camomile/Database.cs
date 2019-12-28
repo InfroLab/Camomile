@@ -5,132 +5,108 @@ namespace Camomile
 {
     public class Database
     {
-        public static ObservableCollection<HouseViewModel> GetHouses()
+        public static ObservableCollection<CompanyViewModel> GetCompanies()
         {
-            ObservableCollection<HouseViewModel> houses = new ObservableCollection<HouseViewModel>();
+            ObservableCollection<CompanyViewModel> companies = new ObservableCollection<CompanyViewModel>();
 
             using(DataContext db = new DataContext())
             {
-                var table = db.Houses;
+                var table = db.Companies;
 
                 foreach (var r in table)
                 {
-                    houses.Add(new HouseViewModel { Id=r.Id, Address=r.Address, Antenna=r.Antenna, CabelTV=r.CabelTV, ColdWater=r.ColdWater, Delivery=r.Delivery, Elevator=r.Elevator, EntranceNumber=r.EntranceNumber, Flats=r.Flats, Floors=r.Floors, Gas=r.Gas, HotWater=r.HotWater, ProjectNumber=r.ProjectNumber, Radio=r.Radio, Settlement=r.Settlement, Telephone=r.Telephone });
+                    companies.Add(new CompanyViewModel { Id=r.Id, Name=r.Name, ContractStatus=r.ContractStatus });
                 }
             }
-            return houses;
+            return companies;
         }
-        public static ObservableCollection<ElectricSubViewModel> GetElectricSubs()
+        public static ObservableCollection<UserViewModel> GetUsers()
         {
-            ObservableCollection<ElectricSubViewModel> houses = new ObservableCollection<ElectricSubViewModel>();
+            ObservableCollection<UserViewModel> users = new ObservableCollection<UserViewModel>();
 
             using (DataContext db = new DataContext())
             {
-                var table = db.ElectricSubs;
+                var table = db.Users;
 
                 foreach (var r in table)
                 {
-                    houses.Add(new HouseViewModel { Id = r.Id, Address = r.Address, Features = r.Features });
+                    users.Add(new UserViewModel { Id = r.Id, Name = r.Name, Login = r.Login, Password = r.Password, CompanyId = r.CompanyId });
                 }
             }
-            return houses;
+            return users;
         }
-        //public static ObservableCollection<UserViewModel> GetUsers()
-        //{
-        //    ObservableCollection<UserViewModel> users = new ObservableCollection<UserViewModel>();
+        public static void GetUsersByCompany(int id)
+        {
+            using (DataContext db = new DataContext())
+            {
+                var table = from u in db.Users
+                            where u.CompanyId == id
+                            select u;
 
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var table = db.Users;
-
-        //        foreach (var r in table)
-        //        {
-        //            users.Add(new UserViewModel { Id = r.Id, Name = r.Name, Login = r.Login, Password = r.Password, CompanyId = r.CompanyId });
-        //        }
-        //    }
-        //    return users;
-        //}
-        //public static void GetUsersByCompany(int id)
-        //{
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var table = from u in db.Users
-        //                    where u.CompanyId == id
-        //                    select u;
-
-        //        UsersListViewModel.Users.Clear();
-        //        foreach (var r in table)
-        //        {
-        //            UsersListViewModel.Users.Add(new UserViewModel { Id = r.Id, Name = r.Name, Login = r.Login, Password = r.Password, CompanyId = r.CompanyId });
-        //        }
-        //    }
-        //}
-        public static void AddHouse(House h)
+                UsersListViewModel.Users.Clear();
+                foreach (var r in table)
+                {
+                    UsersListViewModel.Users.Add(new UserViewModel { Id = r.Id, Name = r.Name, Login = r.Login, Password = r.Password, CompanyId = r.CompanyId });
+                }
+            }
+        }
+        public static void AddUser(User u)
         {
-            using (DataContext db = new DataContext())
+            using(DataContext db = new DataContext())
             {
-                db.Houses.Add(h);
+                db.Users.Add(u);
                 db.SaveChanges();
             }
         }
-        public static void RemoveHouse(int id)
+        public static void AddCompany(Company c)
         {
             using (DataContext db = new DataContext())
             {
-                var h = db.Houses.Find(id);
-                db.Houses.Remove(h);
+                db.Companies.Add(c);
                 db.SaveChanges();
             }
         }
-        public static void AddElectricSub(House e)
+        public static void RemoveUser(int id)
+        {
+            using(DataContext db = new DataContext())
+            {
+                var u = db.Users.Find(id);
+                db.Users.Remove(u);
+                db.SaveChanges();
+            }
+        }
+        public static void RemoveCompany(int id)
         {
             using (DataContext db = new DataContext())
             {
-                db.Houses.Add(e);
+                var c = db.Companies.Find(id);
+                db.Companies.Remove(c);
                 db.SaveChanges();
             }
         }
-        public static void RemoveElectricSub(int id)
+        public static void UpdateUser(User u)
         {
             using (DataContext db = new DataContext())
             {
-                var e = db.Houses.Find(id);
-                db.Houses.Remove(e);
+                var updatedUser = db.Users.Find(u.Id);
+                //Changing every user property in turn
+                updatedUser.Name = u.Name;
+                updatedUser.Login = u.Login;
+                updatedUser.Password = u.Password;
+                updatedUser.CompanyId = u.CompanyId;
                 db.SaveChanges();
             }
         }
-        //public static void RemoveCompany(int id)
-        //{
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var c = db.Companies.Find(id);
-        //        db.Companies.Remove(c);
-        //        db.SaveChanges();
-        //    }
-        //}
-        //public static void UpdateUser(User u)
-        //{
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var updatedUser = db.Users.Find(u.Id);
-        //        //Changing every user property in turn
-        //        updatedUser.Name = u.Name;
-        //        updatedUser.Login = u.Login;
-        //        updatedUser.Password = u.Password;
-        //        updatedUser.CompanyId = u.CompanyId;
-        //        db.SaveChanges();
-        //    }
-        //}
-        //public static void UpdateCompany(Company c)
-        //{
-        //    using (DataContext db = new DataContext())
-        //    {
-        //        var updatedCompany = db.Companies.Find(c.Id);
-        //        //Changing every company property in turn
-        //        updatedCompany.Name = c.Name;
-        //        updatedCompany.ContractStatus = c.ContractStatus;
-        //        db.SaveChanges();
-        //    }
-        //}
+        public static void UpdateCompany(Company c)
+        {
+            using (DataContext db = new DataContext())
+            {
+                var updatedCompany = db.Companies.Find(c.Id);
+                //Changing every company property in turn
+                updatedCompany.Name = c.Name;
+                updatedCompany.ContractStatus = c.ContractStatus;
+                db.SaveChanges();
+            }
+        }
     }
 }

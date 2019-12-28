@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Camomile"
-        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Camomile.AddHouseWindow"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Camomile.AddCompanyWindow"
         mc:Ignorable="d"
-        Title="Добавить новый дом" Height="100" Width="1600" ResizeMode="CanMinimize">
+        Title="Add new company" Height="250" Width="230" ResizeMode="CanMinimize">
     <Window.Resources>
         <ControlTemplate x:Key="CustomToggleButton" TargetType="{x:Type ToggleButton}">
             <Grid>
@@ -221,45 +221,16 @@
         </ControlTemplate>
     </Window.Resources>
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Адрес" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Подъезды" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Этажи" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Квартиры" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Лифт" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="ГВС" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="ХВС" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Газ" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Антенна" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Кабельное-ТВ" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Телефон" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Радио" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Номер проекта" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Дата заселения" VerticalAlignment="Top" Width="98"/>
-                <TextBlock HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="Дата сдачи" VerticalAlignment="Top" Width="98"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="AddressBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="EntranceBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="FloorsBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="FlatsBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="ElevatorBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="HotWaterBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="ColdWaterBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="GasBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="AntennaBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="CabelTVBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="TelephoneBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="RadioBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="ProjectBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="SettlementBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-                <TextBox x:Name="DeliveryBox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="AddButton" IsDefault="True" Content="Добавить" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="98" Click="AddButton_Click"/>
-                <Button IsCancel="True" Content="Отменить" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="98"/>
-            </StackPanel>
-        </StackPanel>
+        <Button x:Name="AddButton" IsDefault="True" Content="Add" HorizontalAlignment="Left" Height="20" Margin="10,120,0,0" VerticalAlignment="Top" Width="98" Click="AddButton_Click"/>
+        <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Height="20" Margin="113,120,0,0" VerticalAlignment="Top" Width="98"/>
+        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="21" Margin="10,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98"/>
+        <ComboBox x:Name="ContractStatusCombo" HorizontalAlignment="Left" Height="26" Margin="113,50,0,0" VerticalAlignment="Top" Width="98" Template="{DynamicResource ComboBoxControlTemplate}">
+            <TextBlock HorizontalAlignment="Left" Text="Opened"/>
+            <TextBlock HorizontalAlignment="Left" Text="Closed"/>
+            <TextBlock HorizontalAlignment="Left" Text="Unsigned"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="10,26,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="98"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="113,26,0,0" TextWrapping="Wrap" Text="Contract Status" VerticalAlignment="Top" Width="98"/>
+
     </Grid>
 </Window>

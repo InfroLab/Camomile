@@ -63,26 +63,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddElectricSubWindow.xaml.cs">
-      <DependentUpon>AddElectricSubWindow.xaml</DependentUpon>
+    <Compile Include="AddCompanyWindow.xaml.cs">
+      <DependentUpon>AddCompanyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddHouseWindow.xaml.cs">
-      <DependentUpon>AddHouseWindow.xaml</DependentUpon>
+    <Compile Include="AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Command.cs" />
-    <Compile Include="ElectricSub.cs" />
-    <Compile Include="House.cs" />
-    <Compile Include="ElectricSubListViewModel.cs" />
-    <Compile Include="ElectricSubViewModel.cs" />
-    <Compile Include="HouseViewModel.cs" />
-    <Compile Include="HousesListViewModel.cs" />
+    <Compile Include="Company.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="EditCompanyWindow.xaml.cs">
+      <DependentUpon>EditCompanyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditUserWindow.xaml.cs">
+      <DependentUpon>EditUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="UsersListViewModel.cs" />
+    <Compile Include="UserViewModel.cs" />
     <Compile Include="ViewModel.cs" />
-    <Page Include="AddElectricSubWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="AddCompanyWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddHouseWindow.xaml">
+    <Page Include="AddUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditCompanyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,6 +106,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CompaniesListViewModel.cs" />
+    <Compile Include="CompanyViewModel.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
